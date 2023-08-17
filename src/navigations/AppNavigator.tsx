@@ -28,8 +28,6 @@ const AppNavigator = () => {
                         }
                     }
                 }
-
-
             >
                 <Drawer.Screen name='Home' component={Home} />
                 <Drawer.Screen name='AboutUs' component={AboutUs} />

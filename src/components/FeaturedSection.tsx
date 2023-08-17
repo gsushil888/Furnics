@@ -1,7 +1,6 @@
 import { Image, ImageBackground, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import GlobalStyle from '../utils/GlobalStyle'
-import { deviceHeight, deviceWidth } from './Dimension'
 import { FlatList } from 'react-native-gesture-handler'
 import ProductCard from './ProductCard'
 
@@ -16,17 +15,16 @@ const productItems = [
 
 const FeaturedSection = () => {
     return (
-        <View style={{ flex: 1 }}>
-            <Text style={GlobalStyle.sectionTitle}>
-                Our Featured products
-            </Text>
+        <View style={styles.featured_section}>
+            <Text style={GlobalStyle.sectionTitle}>Our Featured products</Text>
+
             <Pressable
                 style={({ pressed }) => [styles.shopAllBtn,
                 pressed ? { borderColor: '#00f', borderWidth: 1, color: '#fff' } : null
                 ]}>
                 <Text style={GlobalStyle.text}>Shop All</Text>
-
             </Pressable>
+
             <FlatList
                 data={productItems}
                 horizontal={true}
@@ -45,6 +43,8 @@ const FeaturedSection = () => {
 export default FeaturedSection
 
 const styles = StyleSheet.create({
+
+    featured_section: { flex: 1 },
     shopAllBtn: {
         width: 200,
         height: 70,

@@ -11,36 +11,30 @@ import GlobalStyle from '../utils/GlobalStyle'
 
 
 
-const AboutSection = () => {
+const AboutSection = ({ navigations }: any) => {
     return (
-        <View style={styles.wrapper}>
-            <View style={styles.aboutSectionContainer}>
+        <View style={styles.about_section}>
 
-                <View style={{ margin: 10, }}>
-                    <Image style={{ width: '100%', height: 400 }} source={require('../assets/images/single-image1.jpg')} />
+            <View style={styles.about_section_container}>
+
+                <View style={styles.image_container}>
+                    <Image style={styles.image} source={require('../assets/images/single-image1.jpg')} />
                 </View>
 
-                <View style={{ padding: 30 }}>
-                    <Text style={GlobalStyle.sectionTitle}>
-                        About Us
-                    </Text>
-                    <Text style={styles.text}>
-                        Ac varius lectus tellus tellus quisque tristique aenean. Volutpat velit nulla eu iaculis risus in urna. Eu morbi vel purus velit dui vel egestas purus sed. Eget turpis tincidunt faucibus montes arcu in nullam tortor orci. Nulla tellus sed purus vestibulum sagittis pretium donec nec mattis ollis porta sit ut.
-                    </Text>
-                    <Text style={styles.text}>
-                        Facilisi ut vulputate volutpat a aliquet. Facilisis sed quis pretium amet hac. Justo tristique sagittis sodales viverra venenatis integer fringilla.
-                    </Text>
+                <View style={styles.text_container}>
+                    <Text style={GlobalStyle.sectionTitle}>About Us</Text>
+                    <Text style={styles.text}>Ac varius lectus tellus tellus quisque tristique aenean. Volutpat velit nulla eu iaculis risus in urna. Eu morbi vel purus velit dui vel egestas purus sed. Eget turpis tincidunt faucibus montes arcu in nullam tortor orci. Nulla tellus sed purus vestibulum sagittis pretium donec nec mattis ollis porta sit ut.</Text>
+                    <Text style={styles.text}>Facilisi ut vulputate volutpat a aliquet. Facilisis sed quis pretium amet hac. Justo tristique sagittis sodales viverra venenatis integer fringilla.</Text>
+
                     <Pressable
-                        style={({ pressed }) => [
-                            { backgroundColor: pressed ? '#fff' : 'transparent', }, styles.aboutUsBtn]
+                        onPress={()=>navigations.navigate('AboutUs')}
+                        style={({ pressed }) => [styles.about_us_btn,
+                        { backgroundColor: pressed ? '#fff' : 'transparent', }]
                         }
                     >
-                        <Text style={
-                            styles.aboutUsText
-                        }>About Us</Text>
+                        <Text style={styles.about_us_text}>About Us</Text>
                         <Feather name='arrow-right' color={'black'} size={24} />
                     </Pressable>
-
                 </View>
 
             </View>
@@ -50,26 +44,35 @@ const AboutSection = () => {
 
 const styles = StyleSheet.create({
 
-    wrapper: {
-        // margin: 10
-    },
-    aboutSectionContainer: {
-        flexDirection: 'column',
-        gap: 60
-    },
+    about_section: {
 
+    },
+    about_section_container: {
+        flexDirection: 'column',
+        gap: 30,
+        marginBottom: 60
+    },
+    image_container: {
+        paddingHorizontal: 15
+    },
+    image: {
+        width: '100%',
+        height: 400
+    },
+    text_container: {
+        paddingHorizontal: 20
+    },
     text: {
         color: 'black',
         fontFamily: 'Poppins-Light',
         fontSize: 22,
         marginBottom: 20
     },
-    aboutUsBtn: {
+    about_us_btn: {
         borderWidth: 1,
         borderColor: 'black',
         flexDirection: 'row',
         gap: 20,
-        
         marginTop: 20,
         width: 200,
         height: 70,
@@ -77,12 +80,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    aboutUsText: {
+    about_us_text: {
         color: 'black',
         fontSize: 22,
         textTransform: 'uppercase'
     }
-
 
 })
 

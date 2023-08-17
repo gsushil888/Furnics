@@ -8,20 +8,17 @@ import ServicesSection from '../components/ServicesSection';
 import FeaturedSection from '../components/FeaturedSection';
 import Footer from '../components/Footer';
 
-
-
 const Home = ({ navigation }: any) => {
     return (
 
         <View style={styles.body}>
             <ScrollView>
                 <Header navigations={navigation} />
-                <Banner />
+                <Banner navigations={navigation} />
                 <ServicesSection />
-                <AboutSection />
+                <AboutSection navigations={navigation} />
                 <FeaturedSection />
                 <Footer />
-                
             </ScrollView>
         </View>
 
@@ -31,9 +28,7 @@ const styles = StyleSheet.create({
     body: {
         flex: 1,
         backgroundColor: 'rgba(234,231,224,1)',
-        // backgroundColor:'rgba(245,245,241,1)',
         opacity: 1,
-
     },
 
 

@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import GlobalStyle from '../utils/GlobalStyle'
 
 const Shop = () => {
   return (
-    <View style={{backgroundColor:'green',flex:1}}>
-      <Text>Shop</Text>
+    <View style={[{ backgroundColor: 'green' }, GlobalStyle.centered_item]}>
+      <Text style={GlobalStyle.big_text}>Shop</Text>
     </View>
   )
 }

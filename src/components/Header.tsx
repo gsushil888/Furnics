@@ -2,15 +2,14 @@ import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-const Header = ({navigations}:any) => {
+const Header = ({ navigations }: any) => {
     return (
         <View style={styles.header}>
             <Image
-                style={{}}
                 source={require('../assets/images/main-logo.png')}
-                resizeMode='contain'
-            />
-            <Icon name='menu' size={40} color={"black"} onPress={() => { navigations.openDrawer() }} />
+                resizeMode='contain' />
+            <Icon name='menu' size={40} color={"black"}
+                onPress={() => { navigations.openDrawer() }} />
         </View>
     )
 }

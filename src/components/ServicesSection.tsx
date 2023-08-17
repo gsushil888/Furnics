@@ -7,12 +7,11 @@ const servicesItem = [
     { name: 'Pick Up in Store', icon: 'cart-outline' },
     { name: 'Special Pacakaging', icon: 'gift-outline' },
     { name: 'Return & Refund Policy', icon: 'reload-outline' },
-
 ]
 
 const ServicesSection = () => {
     return (
-        <View style={{ margin: 10 }}>
+        <View style={styles.services_section}>
             <Items />
         </View>
     )
@@ -21,20 +20,13 @@ const ServicesSection = () => {
 export const Items = () => {
     return (
         servicesItem.map((item, index) => (
-            <View key={index} style={
-                { paddingLeft: 10 }
-            }>
-
-                <View style={styles.rowBox} >
-                    <View style={styles.roundedIconBox}>
-                        <Ionicons name={item.icon} size={28} color={'black'} />
-                    </View>
-                    <View>
-                        <Text style={styles.text}>{item.name}</Text>
-                    </View>
-
+            <View key={index} style={styles.view_row}>
+                <View style={styles.view_round_icon}>
+                    <Ionicons name={item.icon} size={28} color={'#787d62'} />
                 </View>
-
+                <View>
+                    <Text style={styles.text}>{item.name}</Text>
+                </View>
             </View>
         ))
     )
@@ -43,13 +35,18 @@ export const Items = () => {
 export default ServicesSection
 
 const styles = StyleSheet.create({
-    rowBox: {
+    services_section: {
+        padding: 10,
+        marginBottom: 40
+    },
+    view_row: {
         flexDirection: 'row',
         alignItems: 'center',
         gap: 20,
-        marginVertical: 10
+        marginVertical: 10,
+        paddingLeft: 20
     },
-    roundedIconBox: {
+    view_round_icon: {
         borderRadius: 50,
         borderWidth: 1,
         borderColor: '#787d62',
