@@ -3,6 +3,7 @@ import React from 'react'
 import GlobalStyle from '../utils/GlobalStyle'
 import { FlatList } from 'react-native-gesture-handler'
 import ProductCard from './ProductCard'
+import Feather from 'react-native-vector-icons/Feather'
 
 const productItems = [
     { name: 'Black Sofa set', price: '$200', image: require('../assets/images/product-item1.jpg') },
@@ -22,7 +23,10 @@ const FeaturedSection = () => {
                 style={({ pressed }) => [styles.shopAllBtn,
                 pressed ? { borderColor: '#00f', borderWidth: 1, color: '#fff' } : null
                 ]}>
-                <Text style={GlobalStyle.text}>Shop All</Text>
+                <View style={GlobalStyle.row_container}>
+                    <Text style={styles.text}>Shop All</Text>
+                    <Feather name='arrow-right' color={'black'} size={18} />
+                </View>
             </Pressable>
 
             <FlatList
@@ -31,11 +35,8 @@ const FeaturedSection = () => {
                 renderItem={
                     ({ item }) => (<ProductCard items={item} />)
                 }
-                style={{ margin: 10 }}
+                style={{}}
             />
-
-
-
         </View>
     )
 }
@@ -44,18 +45,27 @@ export default FeaturedSection
 
 const styles = StyleSheet.create({
 
-    featured_section: { flex: 1 },
+    featured_section: {
+        flex: 1,
+        paddingHorizontal: 10,
+        marginBottom:50,
+    },
     shopAllBtn: {
         width: 200,
-        height: 70,
-        padding: 5,
-        alignItems: 'center',
+        height: 60,
+        marginBottom: 10,
         justifyContent: 'center',
-        marginLeft: 20,
-        marginBottom: 30
+        alignItems: 'center'
+
+    },
+    section_title: {
 
     },
     text: {
-
+        color: 'black',
+        fontFamily: 'Poppins-Light',
+        fontSize: 18,
+        textTransform: 'uppercase',
+        letterSpacing: 1.6
     }
 })

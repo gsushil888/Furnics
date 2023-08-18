@@ -27,7 +27,7 @@ const AboutSection = ({ navigations }: any) => {
                     <Text style={styles.text}>Facilisi ut vulputate volutpat a aliquet. Facilisis sed quis pretium amet hac. Justo tristique sagittis sodales viverra venenatis integer fringilla.</Text>
 
                     <Pressable
-                        onPress={()=>navigations.navigate('AboutUs')}
+                        onPress={() => navigations.navigate('AboutUs')}
                         style={({ pressed }) => [styles.about_us_btn,
                         { backgroundColor: pressed ? '#fff' : 'transparent', }]
                         }
@@ -45,12 +45,11 @@ const AboutSection = ({ navigations }: any) => {
 const styles = StyleSheet.create({
 
     about_section: {
-
+        marginBottom:40,
     },
     about_section_container: {
         flexDirection: 'column',
         gap: 30,
-        marginBottom: 60
     },
     image_container: {
         paddingHorizontal: 15
@@ -74,6 +73,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 20,
         marginTop: 20,
+        marginBottom: 20,
         width: 200,
         height: 70,
         padding: 5,
@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
     },
     about_us_text: {
         color: 'black',
-        fontSize: 22,
+        fontSize: 20,
+        letterSpacing: 1.6,
         textTransform: 'uppercase'
     }
 

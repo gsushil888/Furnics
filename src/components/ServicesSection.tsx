@@ -37,14 +37,15 @@ export default ServicesSection
 const styles = StyleSheet.create({
     services_section: {
         padding: 10,
-        marginBottom: 40
+        marginBottom: 40,
     },
     view_row: {
         flexDirection: 'row',
         alignItems: 'center',
         gap: 20,
         marginVertical: 10,
-        paddingLeft: 20
+        paddingLeft: 20,
+        flexWrap: 'wrap'
     },
     view_round_icon: {
         borderRadius: 50,

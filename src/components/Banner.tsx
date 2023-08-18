@@ -32,7 +32,7 @@ const Banner = ({ navigations }: any) => {
 export default Banner
 const styles = StyleSheet.create({
     banner: {
-        marginBottom: 50
+        marginBottom: 50,
     },
     banner_img_background: {
         height: 682,

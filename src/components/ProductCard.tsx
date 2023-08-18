@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     image: {
         height: deviceHeight / 3 - 50,
         width: deviceWidth / 2,
-        borderRadius: 10
+        // borderRadius: 10
     },
     name_text: {
         color: '#787d62',
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
     price_text: {
         color: '#787d62',
         fontFamily: 'Cinzel',
-        fontSize: 22,
+        fontSize: 18,
     }
 })

@@ -1,12 +1,16 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-   wrapper: {
+   row_container: {
+      flexDirection: 'row',
+      gap: 10,
+      alignItems: 'center',
+      justifyContent:'center'
 
    },
    sectionTitle: {
       color: '#787d62',
-      fontSize: 52,
+      fontSize: 48,
       fontFamily: 'Cinzel',
       textTransform: 'uppercase',
       marginBottom: 20
