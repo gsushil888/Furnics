@@ -8,6 +8,7 @@ const menuItems = [
     { title: 'Shop', icon: 'caret-down-sharp', screen: 'Shop' },
     { title: 'Blog', icon: 'caret-down-sharp', screen: 'Blog' },
     { title: 'Pages', icon: 'caret-down-sharp', screen: 'Pages' },
+    { title: 'Log out', icon: 'log-out-outline', screen: 'Login' },
 ]
 
 
@@ -15,21 +16,17 @@ const CustomDropDownItems = (props: any) => {
     return (
 
         menuItems.map((item, index) => (
-            
             <View key={index} style={styles.drawer_items}>
-
-                <TouchableOpacity>
-
+                <TouchableOpacity
+                    onPress={() => props.navigation.navigate(item.screen)}
+                >
                     <View style={styles.drawer_item_wrapper} >
-                        <Text style={styles.text}
-                            onPress={() => props.navigation.navigate(item.screen)} >{item.title}</Text>
+                        <Text style={styles.text}>{item.title}</Text>
                         {
                             item.icon === '' ? null : <Ionicons name={item.icon} size={30} color={'black'} />
                         }
                     </View>
-
                 </TouchableOpacity>
-
             </View>
         ))
 
@@ -41,8 +38,9 @@ export default CustomDropDownItems
 const styles = StyleSheet.create({
     drawer_items: {
         backgroundColor: '#fff',
-        paddingHorizontal: 30,
+        paddingStart: 30,
         paddingBottom: 20,
+
     },
     drawer_item_wrapper: {
         flexDirection: 'row',
@@ -52,6 +50,7 @@ const styles = StyleSheet.create({
     text: {
         textTransform: 'uppercase',
         color: 'black',
-        fontSize: 40,
+        fontSize: 36,
+        fontFamily: 'Poppins-Light'
     }
 })

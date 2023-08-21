@@ -12,8 +12,8 @@ const CustomDrawerContent = (props: any) => {
 
             <View style={styles.drawer_header}>
                 <Image resizeMode='contain' source={require('../assets/images/main-logo.png')} />
-                <TouchableOpacity onPress={() => { }}>
-                    <Entypo name='cross' color={'black'} size={32} onPress={() => { props.navigation.closeDrawer() }} />
+                <TouchableOpacity onPress={() => { props.navigation.closeDrawer() }}>
+                    <Entypo name='cross' color={'gray'} size={36} onPress={() => { }} />
                 </TouchableOpacity>
             </View>
 
@@ -28,14 +28,14 @@ const CustomDrawerContent = (props: any) => {
 const styles = StyleSheet.create({
     drawer_content: {
         flex: 1,
-        padding: 25
     },
     drawer_header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
         alignItems: 'center',
-        marginBottom: 50
+        marginBottom: 50,
+        padding: 25
     }
 
 })

@@ -11,6 +11,8 @@ import Pages from '../screens/Pages';
 import Shop from '../screens/Shop';
 
 import CustomDrawerContent from '../components/CustomDrawerContent';
+import Login from '../screens/Login';
+import Register from '../screens/Register';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,6 +20,7 @@ const AppNavigator = () => {
     return (
         <NavigationContainer>
             <Drawer.Navigator
+                initialRouteName='Login'
                 drawerContent={(props) => (<CustomDrawerContent {...props}></CustomDrawerContent>)}
                 screenOptions={
                     {
@@ -29,6 +32,8 @@ const AppNavigator = () => {
                     }
                 }
             >
+                <Drawer.Screen name='Login' component={Login} />
+                <Drawer.Screen name='Register' component={Register} />
                 <Drawer.Screen name='Home' component={Home} />
                 <Drawer.Screen name='AboutUs' component={AboutUs} />
                 <Drawer.Screen name='Blog' component={Blog} />

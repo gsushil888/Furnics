@@ -1,5 +1,12 @@
-import { View, ScrollView, StyleSheet } from 'react-native'
 import React from 'react'
+
+import {
+    View,
+    ScrollView,
+    StyleSheet
+} from 'react-native'
+
+import { deviceHeight, deviceWidth } from '../components/Dimension';
 
 import Header from '../components/Header';
 import Banner from '../components/Banner';
@@ -7,9 +14,10 @@ import AboutSection from '../components/AboutSection';
 import ServicesSection from '../components/ServicesSection';
 import RoomsCard from '../components/RoomsCard';
 import FeaturedSection from '../components/FeaturedSection';
+import TrendingProducts from '../components/TrendingProducts';
+import ArticlesSection from '../components/ArticlesSection';
+import Subscription from '../components/Subscription';
 import Footer from '../components/Footer';
-
-import { deviceHeight, deviceWidth } from '../components/Dimension';
 
 const Home = ({ navigation }: any) => {
     return (
@@ -22,6 +30,9 @@ const Home = ({ navigation }: any) => {
                 <AboutSection navigations={navigation} />
                 <FeaturedSection />
                 <RoomsCard />
+                <TrendingProducts />
+                <ArticlesSection />
+                <Subscription />
                 <Footer />
             </ScrollView>
         </View>

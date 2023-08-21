@@ -9,8 +9,8 @@ export default StyleSheet.create({
 
    },
    sectionTitle: {
-      color: '#787d62',
-      fontSize: 48,
+      color: '#212529',
+      fontSize: 44,
       fontFamily: 'Cinzel',
       textTransform: 'uppercase',
       marginBottom: 20
