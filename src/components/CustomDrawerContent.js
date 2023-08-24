@@ -6,7 +6,7 @@ import { DrawerContentScrollView } from '@react-navigation/drawer'
 import Entypo from 'react-native-vector-icons/Entypo'
 import CustomDropDownItems from './CustomDropDownItems'
 
-const CustomDrawerContent = (props: any) => {
+const CustomDrawerContent = (props) => {
     return (
         <View style={styles.drawer_content}>
 

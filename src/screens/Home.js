@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {
     View,
     ScrollView,
-    StyleSheet
+    StyleSheet,
+    Text,
+    Button
 } from 'react-native'
 
 import { deviceHeight, deviceWidth } from '../components/Dimension';
@@ -18,13 +20,54 @@ import TrendingProducts from '../components/TrendingProducts';
 import ArticlesSection from '../components/ArticlesSection';
 import Subscription from '../components/Subscription';
 import Footer from '../components/Footer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 
-const Home = ({ navigation }: any) => {
+
+
+
+const Home = ({ navigation }) => {
+
+  
+    const isFocused=useIsFocused();
+
+    useEffect(() => {
+        getData();
+    }, [isFocused])
+
+    const [userObj, setUserObj] = useState({
+        email: '',
+        password: ''
+    });
+
+    // add async in this way 
+    const getData =  () => {
+        try {
+            AsyncStorage.getItem('User')
+                .then(value => {
+                    if (value != null) {
+                        console.log("Getting Data from storage in Home ", value);
+                        let user = JSON.parse(value);
+                        setUserObj(user);
+                    }
+                    else{
+                        setUserObj({email:'',password:''})
+                    }
+                })
+            // const user = await AsyncStorage.getItem('User');
+            // const parsedUser=JSON.parse(user);
+            // setUserObj(parsedUser);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
 
         <View style={styles.body}>
             <ScrollView >
                 <Header navigations={navigation} />
+                <Text style={{ alignSelf: 'center',color:'#000' }}>{userObj?.email}</Text>
                 <Banner navigations={navigation} />
                 <ServicesSection />
                 <AboutSection navigations={navigation} />

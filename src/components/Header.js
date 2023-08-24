@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-const Header = ({ navigations }: any) => {
+const Header = ({ navigations }) => {
     return (
         <View style={styles.header}>
             <View style={styles.header_container}>

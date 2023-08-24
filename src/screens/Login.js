@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import {
     SafeAreaView,
@@ -14,23 +15,104 @@ import {
 } from 'react-native'
 
 
-
 const SignInSchema = Yup.object().shape({
     email: Yup.string()
         .email('Invalid email address')
+        .matches(
+            /^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$/,
+            'Invalid email format'
+        )
         .required('Please enter your email'),
     password: Yup.string()
         .min(6, 'Password must be more than 6 characters!')
         .required('Please enter your password'),
 });
 
-const Login = ({ navigation }: any) => {
+const Login = ({ navigation }) => {
 
     const [focusedEmail, setEmailFocused] = useState(false);
     const [focusedpassword, setPasswordFocused] = useState(false);
-    const [isLoading, setIsLoading] = useState(false)
-    const onLoading = () => {
+    const [isLoading, setIsLoading] = useState(false);
 
+    useEffect(() => {
+        checkSession();
+    }, []);
+
+    const checkSession = () => {
+        try {
+            console.log("Getting Data from Storage in Login Screen for session checking");
+            AsyncStorage.getItem('User')
+                .then(value => {
+                    if (value != null) {
+                        console.log("data found in storage in Login screen and now navigating to Home");
+                        navigation.navigate('Home');
+                    }
+                    else {
+                        console.log("No data found in Storage in Login Screen");
+                    }
+                })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleLogin = async (values) => {
+        setIsLoading(true)
+        try {
+            const userString = await AsyncStorage.getItem('User');
+
+            if (userString) {
+                const user = JSON.parse(userString);
+
+                if (values.email === user.email && values.password === user.password) {
+                    setTimeout(() => {
+                        setIsLoading(false)
+                        Alert.alert('Login Status', 'Login Successfully', [
+                            { text: 'Ok', onPress: () => navigation.navigate("Home", values) },
+                        ]);
+                    }, 3000)
+                } else {
+                    setTimeout(() => {
+                        setIsLoading(false)
+                        Alert.alert('Login Status', 'Login Failed Wrong Credentials', [
+                            { text: 'Ok', onPress: () => navigation.navigate("Login") },
+                        ]);
+                    }, 3000)
+                }
+            } else {
+                setIsLoading(false)
+                Alert.alert('Login Status', 'User not found', [
+                    { text: 'Ok', onPress: () => {} },
+                ]);
+            }
+        } catch (error) {
+            console.error('Error fetching data from AsyncStorage:', error);
+        }
+    };
+
+
+    const onLoginHandler = (values) => {
+        if (values != null) {
+            console.log("Inside submit", values);
+            
+            // try {
+            //     setTimeout(() => {
+            //         setIsLoading(false)
+            //         Alert.alert('Login Status', 'Login Successfully', [
+            //             { text: 'Ok', onPress: () => navigation.navigate("Home", values) },
+            //         ]);
+            //     }, 3000)
+            // } catch (error) {
+            //     console.log("Something went wrong");
+            // }
+            handleLogin(values);
+
+        }
+        else {
+            Alert.alert('Login Status', 'Please provide Credentials', [
+                { text: 'OK', onPress: () => { } },
+            ]);
+        }
     }
 
     return (
@@ -41,20 +123,7 @@ const Login = ({ navigation }: any) => {
             }}
             validationSchema={SignInSchema}
             onSubmit={values => {
-                if (values != null) {
-                    console.log(values);
-                    setIsLoading(true)
-                    setTimeout(() => {
-                        setIsLoading(false)
-                        Alert.alert('Login Status', 'Login Successfully', [
-
-                            { text: 'OK', onPress: () => navigation.navigate("Home") },
-                        ]);
-                        
-                    }, 3000)
-                   
-                }
-
+                onLoginHandler(values)
             }}
         >
             {({ values,
@@ -164,7 +233,7 @@ const Login = ({ navigation }: any) => {
                         </TouchableOpacity>
 
                         <ActivityIndicator size={50} color={'red'} animating={isLoading} />
-                        
+
                     </View>
                 </SafeAreaView>
 

@@ -11,7 +11,7 @@ import GlobalStyle from '../utils/GlobalStyle'
 
 
 
-const AboutSection = ({ navigations }: any) => {
+const AboutSection = ({ navigations }) => {
     return (
         <View style={styles.about_section}>
 

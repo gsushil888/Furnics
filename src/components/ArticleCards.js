@@ -4,11 +4,11 @@ import { Card, Text, Button, Avatar } from 'react-native-paper'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { deviceWidth, deviceHeight } from './Dimension'
 
-const ArticleCards = ({ items }: any) => {
+const ArticleCards = ({ items }) => {
     return (
         <View style={{}}>
             {
-                items.map((item: any, index: any) => (
+                items.map((item, index) => (
                     <View key={index} style={styles.card}>
                         <View style={styles.card_container}>
                             <Image style={styles.image} source={item.image} />

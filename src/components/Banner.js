@@ -1,7 +1,7 @@
 import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Banner = ({ navigations }: any) => {
+const Banner = ({ navigations }) => {
     return (
         <View style={styles.banner}>
             <ImageBackground

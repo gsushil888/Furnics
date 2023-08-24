@@ -2,7 +2,7 @@ import { StyleSheet, Image, TouchableOpacity, View, Text } from 'react-native'
 import React from 'react'
 import { deviceHeight, deviceWidth } from './Dimension'
 
-const ProductCard = ({ items }: any) => {
+const ProductCard = ({ items }) => {
     return (
 
         <TouchableOpacity onPress={() => { }}>
